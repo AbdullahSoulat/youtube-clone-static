@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import Header from "./components/Header";
+import LeftNav from "./components/LeftNav";
+import Video from "./components/Video";
+import data from "./data"
 
-function App() {
+export default function App() {
+  const videoElements = data.map(item => {
+    return <Video
+            key={item.id}
+            item = {item}
+            />
+  })
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <main>
+        <LeftNav />
+        <div className="video-grid">
+          {videoElements}
+        </div>
+        
+      </main>
     </div>
   );
 }
 
-export default App;
+
